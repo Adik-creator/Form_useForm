@@ -10,7 +10,6 @@ function Form(props) {
         register,
         formState: {
             errors,
-            isValid,
         },
         reset,
         handleSubmit,
@@ -37,50 +36,35 @@ function Form(props) {
 
                 <TextField type="text"
                            variant={"outlined"}
-                           label={"First Name"}
-                           style={{width: '100%'}}
-                           helperText={"Поле обязательно к зополнению"}
-                           {...register('firstName', {
-                               minLength: {
-                                   value: 5,
-                                   message: "Минимум 5 символов",
-                               },
+                           label={"firstName"}
+                           style={{width: "100%"}}
+                           error={!!errors?.login}
+                           helperText={errors?.login ? errors.login.message : null}
+                           {...register('login', {
+                               required: 'Поле обязательно к зополнению',
                            })}
                 />
-                <div style={{height: 40}}>
-                    {errors?.firstName && <p>{errors?.firstName?.message || "Error!"}</p>}
-                </div>
 
                 <TextField type="text"
                            variant={"outlined"}
-                           label={"Last Name"}
+                           label={"lastName"}
                            style={{width: '100%'}}
+                           error={!!errors?.lastName}
+                           helperText={errors?.lastName ? errors.lastName.message : null}
                            {...register('lastName', {
                                required: 'Поле обязательно к зополнению',
-                               minLength: {
-                                   value: 5,
-                                   message: "Минимум 5 символов",
-                               },
                            })}
                 />
-                <div style={{height: 40}}>
-                    {errors?.lastName && <p>{errors?.lastName?.message || "Error!"}</p>}
-                </div>
                 <TextField type="password"
                            variant={"outlined"}
                            label={"Password"}
-                           style={{width: '100%'}}
-                           {...register('password', {
+                           style={{width: "100%"}}
+                           error={!!errors?.Password}
+                           helperText={errors?.Password ? errors.Password.message : null}
+                           {...register('Password', {
                                required: 'Поле обязательно к зополнению',
-                               minLength: {
-                                   value: 8,
-                                   message: "Минимум 8 символов",
-                               },
                            })}
                 />
-                <div style={{height: 40}}>
-                    {errors?.password && <p>{errors?.password?.message || "Error!"}</p>}
-                </div>
                 <Button variant="outlined"
                         type="submit"
                         style={{width: '100%', backgroundColor: "#7851f7", color: '#fff', height: 40}}
@@ -90,5 +74,9 @@ function Form(props) {
         </Container>
     )
 }
+//
+// <div style={{height: 40}}>
+//     {errors?.lastName && <p>{errors?.lastName?.message || "Error!"}</p>}
+// </div>
 
 export default Form;
