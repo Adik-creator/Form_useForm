@@ -36,8 +36,8 @@ function Form(props) {
 
                 <TextField type="text"
                            variant={"outlined"}
-                           label={"firstName"}
-                           style={{width: "100%"}}
+                           label={"Login"}
+                           style={{width: "100%", margin: 0, marginTop: 15}}
                            error={!!errors?.login}
                            helperText={errors?.login ? errors.login.message : null}
                            {...register('login', {
@@ -47,27 +47,27 @@ function Form(props) {
 
                 <TextField type="text"
                            variant={"outlined"}
-                           label={"lastName"}
-                           style={{width: '100%'}}
-                           error={!!errors?.lastName}
-                           helperText={errors?.lastName ? errors.lastName.message : null}
-                           {...register('lastName', {
+                           label={"Email"}
+                           style={{width: '100%', margin: 0, marginTop: 15}}
+                           error={!!errors?.email}
+                           helperText={errors?.email ? errors.email.message : null}
+                           {...register('email', {
                                required: 'Поле обязательно к зополнению',
                            })}
                 />
                 <TextField type="password"
                            variant={"outlined"}
                            label={"Password"}
-                           style={{width: "100%"}}
+                           style={{width: "100%", margin: 0, marginTop: 15}}
                            error={!!errors?.Password}
                            helperText={errors?.Password ? errors.Password.message : null}
                            {...register('Password', {
                                required: 'Поле обязательно к зополнению',
                            })}
                 />
-                <Button variant="outlined"
+                <Button variant="contained"
                         type="submit"
-                        style={{width: '100%', backgroundColor: "#7851f7", color: '#fff', height: 40}}
+                        style={{width: '100%', backgroundColor: "#7851f7", color: '#fff', height: 40, marginTop: 15}}
 
                 >Отправить запрос</Button>
             </Box>
