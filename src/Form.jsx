@@ -13,6 +13,8 @@ const schema = yup.object({
     password: yup.string().min(4).max(10).required('Поле обязательно к зополнению!'),
 }).required("Error!");
 
+const styles = {width: '100%', margin: 0, marginTop: 15}
+
 function Form(props) {
     const { register, handleSubmit, reset, formState:{ errors } } = useForm({
         resolver: yupResolver(schema),
@@ -38,7 +40,7 @@ function Form(props) {
                 <TextField type="text"
                            variant={"outlined"}
                            label={"login"}
-                           style={{width: "100%", margin: 0, marginTop: 15}}
+                           style={styles}
                            error={!!errors?.login}
                            helperText={errors?.login && <p>{errors?.login?.message || "Error!"}</p>}
                            {...register('login')}
@@ -47,7 +49,7 @@ function Form(props) {
                 <TextField type="text"
                            variant={"outlined"}
                            label={"email"}
-                           style={{width: '100%', margin: 0, marginTop: 15}}
+                           style={styles}
                            error={!!errors?.email}
                            helperText={errors?.email && <p>{errors?.email?.message || "Error!"}</p>}
                            {...register('email')}
@@ -55,8 +57,8 @@ function Form(props) {
                 <TextField type="password"
                            variant={"outlined"}
                            label={"password"}
-                           style={{width: "100%", margin: 0, marginTop: 15}}
-                           error={!!errors?.Password}
+                           style={styles}
+                           error={!!errors?.password}
                            helperText={errors?.password && <p>{errors?.password?.message || "Error!"}</p>}
                            {...register('password')}
                 />
